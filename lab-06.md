@@ -120,8 +120,11 @@ dn_lq_ak <- dn_lq_ak %>%
 
 ```r
 
-
-
+ggplot(dn_lq_ak, aes(x = minimum_distance)) +
+  stat_bin(
+  binwidth = 10) +
+  geom_bar() 
+  
 ```
 
 ### Exercise 9 
@@ -155,6 +158,9 @@ View(dn_lq_nc)
 dn_lq_nc <- dn_lq_nc %>%
   group_by(address.x) %>%
   mutate(minimum_distance = min(distance))
+  
+ggplot(dn_lq_nc, aes(x = minimum_distance)) +
+  geom_bar()
 
 ```
 

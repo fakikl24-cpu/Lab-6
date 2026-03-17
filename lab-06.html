@@ -443,8 +443,11 @@ dn_lq_ak &lt;- dn_lq_ak %&gt;%
 <div id="exercise-8" class="section level3">
 <h3>Exercise 8</h3>
 <pre class="r"><code>
-
-</code></pre>
+ggplot(dn_lq_ak, aes(x = minimum_distance)) +
+  stat_bin(
+  binwidth = 10) +
+  geom_bar() 
+  </code></pre>
 </div>
 <div id="exercise-9" class="section level3">
 <h3>Exercise 9</h3>
@@ -476,6 +479,9 @@ View(dn_lq_nc)
 dn_lq_nc &lt;- dn_lq_nc %&gt;%
   group_by(address.x) %&gt;%
   mutate(minimum_distance = min(distance))
+  
+ggplot(dn_lq_nc, aes(x = minimum_distance)) +
+  geom_bar()
 </code></pre>
 </div>
 <div id="exercise-10" class="section level3">
