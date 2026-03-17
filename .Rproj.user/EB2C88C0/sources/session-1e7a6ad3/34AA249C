@@ -3,7 +3,7 @@
     "path": "~/GitHub/Lab-6/lab-06.md",
     "project_path": "lab-06.md",
     "type": "markdown",
-    "hash": "2658891025",
+    "hash": "2064541247",
     "contents": "",
     "dirty": false,
     "created": 1772462568044.0,
@@ -12,15 +12,18 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "102,2",
-        "scrollLine": "92"
+        "cursorPosition": "122,0",
+        "scrollLine": "112",
+        "rmdVisualMode": "false",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "2:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1773594976,
+    "lastKnownWriteTime": 1773717496,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1773594976746,
+    "last_content_update": 1773717496029,
     "read_only": false,
     "read_only_alternatives": []
 }
