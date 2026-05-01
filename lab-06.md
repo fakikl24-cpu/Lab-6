@@ -8,15 +8,13 @@ Kryschelle Fakir
 ``` r
 library(tidyverse) 
 library(dsbox) 
-```
-install.packages("devtools")
-devtools::install_github("tidyverse/dsbox")
-``` r
+
 states <- read_csv("data/states.csv")
 
 dn <- read_csv("data/dennys.csv")
 
 lq <- read_csv("data/laquinta.csv")
+
 ```
 
 ### Exercise 1
@@ -88,8 +86,6 @@ haversine <- function(long1, lat1, long2, lat2, round = 3) {
   return(round(d, round))
 }
 
-View(dn_lq_ak)
-
 
 
 ```
@@ -103,8 +99,6 @@ dn_lq_ak <- dn_lq_ak %>%
 ))
 
 ```
-
-Add exercise headings as needed.
 
 ### Exercise 7 
 
@@ -121,11 +115,20 @@ dn_lq_ak <- dn_lq_ak %>%
 ```r
 
 ggplot(dn_lq_ak, aes(x = minimum_distance)) +
-  stat_bin(
-  binwidth = 10) +
-  geom_bar() 
+  geom_histogram(binwidth = 80, fill = "steelblue", color = "black") +
+  labs(
+    title = "Distance from Denny’s to Nearest La Quinta (Alaska)",
+    x = "Distance",
+    y = "Frequency"
+  )
+  
+summary(dn_lq_ak$minimum_distance)
   
 ```
+The distribution is positively skewed, with the mean distance being about 11214 km
+or about 6900 miles apart. The locations are a minimum of 10453 km apart and, at max, 
+12644 km apart. Given the low population of Alaska, these distances make sense. 
+
 
 ### Exercise 9 
 
@@ -153,16 +156,27 @@ dn_lq_nc <- dn_lq_nc %>%
   mutate(distance = haversine(longitude.x, latitude.x, longitude.y, latitude.y, round = 3
 ))
 
-View(dn_lq_nc)
 
 dn_lq_nc <- dn_lq_nc %>%
   group_by(address.x) %>%
   mutate(minimum_distance = min(distance))
   
 ggplot(dn_lq_nc, aes(x = minimum_distance)) +
-  geom_bar()
+  geom_histogram(binwidth = 500, fill = "steelblue", color = "black") +
+  labs(
+    title = "Distance from Denny’s to Nearest La Quinta (NC)",
+    x = "Distance",
+    y = "Frequency"
+  )
+  
+summary(dn_lq_nc$minimum_distance)
 
 ```
+
+The distribution is about normally distributed, with the mean distance being about 14071 km
+or about 8700 miles apart. The locations are a minimum of 8778 km apart and, at max, 
+19530 km apart.  
+
 
 ### Exercise 10
 
@@ -190,14 +204,29 @@ dn_lq_tx <- dn_lq_tx %>%
   mutate(distance = haversine(longitude.x, latitude.x, longitude.y, latitude.y, round = 3
 ))
 
-View(dn_lq_tx)
 
 dn_lq_tx <- dn_lq_tx %>%
   group_by(address.x) %>%
   mutate(minimum_distance = min(distance))
 
+ggplot(dn_lq_tx, aes(x = minimum_distance)) +
+  geom_histogram(binwidth = 500, fill = "steelblue", color = "black") +
+  labs(
+    title = "Distance from Denny’s to Nearest La Quinta (Texas)",
+    x = "Distance",
+    y = "Frequency"
+  )
+  
+summary(dn_lq_tx$minimum_distance)
 
 ```
+
+The distribution is about normally distributed, being slightly negatively skewed, 
+with the mean distance being about 8940.5 km or about 5555 miles apart. 
+The locations are a minimum of 110 km apart and, at max, 
+17123 km apart. Given the sheer size of Texas, a larger distribution of distances 
+makes a lot of sense. 
+
 
 ### Exercise 11
 
@@ -231,5 +260,20 @@ dn_lq_fl <- dn_lq_fl %>%
   group_by(address.x) %>%
   mutate(minimum_distance = min(distance))
 
+ggplot(dn_lq_fl, aes(x = minimum_distance)) +
+  geom_histogram(binwidth = 500, fill = "steelblue", color = "black") +
+  labs(
+    title = "Distance from Denny’s to Nearest La Quinta (Florida)",
+    x = "Distance",
+    y = "Frequency"
+  )
+  
+summary(dn_lq_fl$minimum_distance)
 
 ```
+
+The distribution is negatively skewed but also somewhat bimodal, 
+with the mean distance being about 12093 km or about 7500 miles apart. 
+The locations are a minimum of 410 km apart and, at max, 
+19420 km apart. They love their Denny's and LaQuintas which tracks for Florida
+(I visit often and will be on the lookout for more Dennys and LaQuintas).
