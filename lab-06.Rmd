@@ -165,7 +165,7 @@ dn_lq_nc <- dn_lq_nc %>%
   mutate(distance = haversine(longitude.x, latitude.x, longitude.y, latitude.y, round = 3
 ))
 
-#View(dn_lq_nc)
+glimpse(dn_lq_nc)
 
 dn_lq_nc <- dn_lq_nc %>%
   group_by(address.x) %>%
@@ -202,7 +202,7 @@ dn_lq_tx <- dn_lq_tx %>%
   mutate(distance = haversine(longitude.x, latitude.x, longitude.y, latitude.y, round = 3
 ))
 
-View(dn_lq_tx)
+glimpse(dn_lq_tx)
 
 dn_lq_tx <- dn_lq_tx %>%
   group_by(address.x) %>%
@@ -237,7 +237,7 @@ dn_lq_fl <- dn_lq_fl %>%
   mutate(distance = haversine(longitude.x, latitude.x, longitude.y, latitude.y, round = 3
 ))
 
-View(dn_lq_fl)
+glimpse(dn_lq_fl)
 
 dn_lq_fl <- dn_lq_fl %>%
   group_by(address.x) %>%
